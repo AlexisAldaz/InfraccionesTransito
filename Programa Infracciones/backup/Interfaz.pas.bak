@@ -1,0 +1,288 @@
+
+Unit Interfaz;
+
+Interface
+
+Uses crt, Archivos;
+
+Procedure Menu(Var Arch1:t_arch_c; Var Arch2:t_arch_i; Var Arbol:t_punt_c);
+
+Implementation
+
+Procedure OpConductor(Var seleccionado:byte);
+
+Var 
+  salir: boolean;
+  tecla: char;
+Begin
+  salir := false;
+  seleccionado := 1;
+  While Not salir Do
+    Begin
+      textbackground(black);
+      clrscr;
+      If (seleccionado = 1) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Alta de conductor');
+      If (seleccionado = 2) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Consulta de Conductor');
+      If (seleccionado = 3) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Modificar datos del Conductor');
+
+      If (seleccionado = 4) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Dar de Baja a un Conductor');
+
+      If (seleccionado = 5) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Salir');
+      tecla := readkey;
+
+      If tecla=#00 Then
+        Begin
+          tecla := readkey;
+        End;
+
+      Case tecla Of 
+        #72: If seleccionado > 1 Then seleccionado := seleccionado-1;
+        #80: If seleccionado < 5 Then seleccionado := seleccionado+1;
+        #13: salir := true;
+      End;
+    End;
+End;
+
+
+Procedure MenuConductor(Var ARCH:t_arch_c; Var arbol:t_punt_c);
+
+Var 
+  op: byte;
+Begin
+  Repeat
+    clrscr;
+    OpConductor(op);
+    Case op Of 
+      1: ALTA_C(ARCH, arbol);
+      2: Consulta_C(ARCH, arbol);
+      3: Modificar_C(ARCH, arbol);
+      4: Baja(ARCH, arbol);
+    End;
+    readkey;
+  Until (op = 5);
+End;
+
+
+Procedure OpInfracciones(Var seleccionado:byte);
+
+Var 
+  salir: boolean;
+  tecla: char;
+Begin
+  salir := false;
+  seleccionado := 1;
+  While Not salir Do
+    Begin
+      textbackground(black);
+      clrscr;
+      If (seleccionado = 1) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Alta de infraccion');
+      If (seleccionado = 2) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Consulta de Infracción');
+      If (seleccionado = 3) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Reclamo de infracción');
+
+      If (seleccionado = 4) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Salir');
+      tecla := readkey;
+
+      If tecla=#00 Then
+        Begin
+          tecla := readkey;
+        End;
+
+      Case tecla Of 
+        #72: If seleccionado > 1 Then seleccionado := seleccionado-1;
+        #80: If seleccionado < 4 Then seleccionado := seleccionado+1;
+        #13: salir := true;
+      End;
+    End;
+End;
+
+Procedure MenuInfracciones(Var ARCH:t_arch_i;Var arch2:t_arch_c; arbol:
+                           t_punt_c);
+
+Var 
+  op: byte;
+Begin
+  Repeat
+    clrscr;
+    OpInfracciones(op);
+    Case op Of 
+      1: ALTA_I (ARCH,arch2,arbol);
+      2: Consulta_I(ARCH);
+      // HAY QUE HACER
+      3: MOD_inf(ARCH);
+    End;
+    readkey;
+  Until (op = 4);
+End;
+
+Procedure OpMenu(Var seleccionado:byte);
+
+Var 
+  salir: boolean;
+  tecla: char;
+Begin
+  salir := false;
+  seleccionado := 1;
+  While Not salir Do
+    Begin
+      textbackground(black);
+      clrscr;
+      If (seleccionado = 1) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Conductores');
+      If (seleccionado = 2) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Infracciones');
+
+      If (seleccionado = 3) Then
+        Begin
+          TextBackground(White);
+          TextColor(Black);
+        End
+      Else
+        Begin
+          TextBackground(Black);
+          TextColor(white);
+        End;
+      writeln('Salir');
+      tecla := readkey;
+
+      If tecla=#00 Then
+        Begin
+          tecla := readkey;
+        End;
+
+      Case tecla Of 
+        #72: If seleccionado > 1 Then seleccionado := seleccionado-1;
+        #80: If seleccionado < 3 Then seleccionado := seleccionado+1;
+        #13: salir := true;
+      End;
+    End;
+End;
+
+Procedure Menu(Var Arch1:t_arch_c; Var Arch2:t_arch_i; Var Arbol:t_punt_c);
+
+Var 
+  op: byte;
+Begin
+  crear_archivos(Arch1, Arch2);
+  Iniciar_Arbol(Arbol, Arch1);
+  Repeat
+    clrscr;
+    OpMenu(op);
+    Case op Of 
+      1: MenuConductor(Arch1,Arbol);
+      2: MenuInfracciones(Arch2, Arch1, Arbol);
+    End;
+    readkey;
+  Until (op = 3);
+  cerrar_archivos(Arch1, Arch2);
+End;
+
+
+End.

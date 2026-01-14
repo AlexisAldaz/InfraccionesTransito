@@ -1,0 +1,1 @@
+This is an academic project in Pascal from 2023 for the first year of the Information Systems Engineering degree. The objective of this project is to create a program that allows drivers and their violations to be recorded, thus achieving a form of traffic control.
